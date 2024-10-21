@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doações</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html"><img src="logo.png" alt="Início" a></li>
+        <li><a href="index1.html">Doações</a></li>
+        <li><a href="index2.html">Relatórios</a></li>
+        <li><a href="index3.html">Sugestões</a></li>
+        <li><a href="index4.html">Login</a></li>
+        <li><a href="index5.html">Cadastro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="destaque">
+    <p><h2><span>Doe hoje e faça parte da mudança.</span></h2></p>
+    <h3><br>"Não podemos ajudar a todos, mas todos podem ajudar alguém."</br></h3>
+    <h5><br>Ronald Reagan.</br></h5>
+    <div class="card-container">
+      <div class="card" data-price="como doar" onclick="expandCard(event, this)">
+        <img src="imagem1.png" alt="Como doar">
+        <h2>Como doar</h2><br></br>
+        <p>Para fazer uma doação, basta ir até a secretaria da FMP e ........</p>
+      </div>
+      <div class="card" data-price="importância das doações" onclick="expandCard(event, this)">
+        <img src="imagem2.png" alt="Importância das doações">
+        <h2>Importância das doações</h2><br></br>
+        <p>Fazer doações para a faculdade traz uma série de impactos significativos e contribui diretamente para o crescimento e a sustentabilidade de diversas iniciativas acadêmicas e sociais. Como auxiliar nos equipamentos utilizados na brinquedoteca (lugar para que as mães/responsáveis possam deixar as crianças enquanto estudam), auxiliar mulheres que passam pelo tratamento de câncer (através das doações de mechas de cabelo e lenços), doação de agasalhos para que mais pessoas possam ter a chance de se aquecer em dias de frio, dentre outras coisas.</p>
+      </div>
+      <div class="card" data-price="sugestões de doação" onclick="expandCard(event, this)">
+        <img src="imagem3.png" alt="sugestões de doação">
+        <h2>Sugestões de doação</h2><br></br>
+        <p>Lista de sugestão de doação aqui.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Sistema de Doações FMP.</p>
+    <p>Implementado em xx/xx/xxxx.</p>
+    <p><br>Alunos: Issaga Seco Injai, Maria Eduarda Schmidt e Raissa Vieira.</br></p>
+  </footer>
+
+  <a href="#" class="back-to-top" onclick="scrollToTop(event)"><img src="seta.png" alt="Voltar ao Topo"></a>
+
+  <script>
+function expandCard(event, card) {
+    event.stopPropagation();
+
+    const expandedCard = document.querySelector('.card.expanded');
+    if (expandedCard && expandedCard !== card) {
+        minimizeCard(event, expandedCard); 
+    }
+
+    card.classList.add('expanded');
+    card.querySelector('p').style.maxHeight = 'none'; 
+
+    if (!card.querySelector('.minimize-button')) {
+        card.innerHTML += `
+            <button class="minimize-button" onclick="minimizeCard(event, this.parentNode)">Minimizar</button>
+        `;
+    }
+
+    document.querySelectorAll('.card:not(.expanded)').forEach(c => {
+        c.style.display = 'none'; 
+    });
+}
+
+function minimizeCard(event, card) {
+    event.stopPropagation();
+
+    card.classList.remove('expanded'); 
+    card.querySelector('p').style.maxHeight = '3em'; 
+
+    const minimizeButton = card.querySelector('.minimize-button');
+    if (minimizeButton) {
+        minimizeButton.remove(); 
+    }
+
+    document.querySelectorAll('.card').forEach(c => {
+        c.style.display = 'block';
+    });
+}
+
+function scrollToTop(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+  </script>
+  
+</body>
+</html>
