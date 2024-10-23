@@ -17,13 +17,14 @@ body {
   flex-direction: column;
   font-family: 'Lato', sans-serif;
   justify-content: space-between;
+  padding-top: 0px;
 }
 
 header {
   background-color: #ffffff;
   color: #1b1b2f; 
   padding: 0; 
-  height: 80px; 
+  height: 100px; 
   display: flex; 
   align-items: center; 
   justify-content: center; 
@@ -194,7 +195,7 @@ footer {
   background-color: #e6f7ff;
   padding: 10px 0;
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   bottom: 0;
   width: 100%;
   font-family: 'Lato', sans-serif;
